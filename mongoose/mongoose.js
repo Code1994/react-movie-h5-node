@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 mongoose.set('useCreateIndex', true)
 // 连接上mongodb上的地址为127.0.0.1：27017的demo数据库
-mongoose.connect('mongodb://127.0.0.1:27017/demo', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://127.0.0.1:27017/react_h5', { useNewUrlParser: true, useUnifiedTopology: true })
 
 
 const promise =  new Promise((resolve, reject) => {

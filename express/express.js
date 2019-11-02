@@ -5,6 +5,9 @@ const db = require('../mongoose/mongoose')
 // 引入cors,具体配置方法可见 => https://github.com/expressjs/cors#simple-usage-enable-all-cors-requests
 const cors = require('cors')
 
+// schemas
+const hitFilmModel = require('../mongoose/schema/hitFilms')
+
 // 创建服务器
 const app = express()
 app.use(cors())
@@ -17,7 +20,22 @@ db.then(res => {
     })
     // 获取热播电影
     app.get('/getHitFilms', (req, res) => {
-      res.send('success')
+      // get方式
+      const cinemaCode = req.query.cinemaCode
+      console.log(cinemaCode)
+      hitFilmModel.find({ }, (err, data) => {
+        console.log(data)
+        if (err) {
+          throw new Error(err)
+        } else {
+          const obj = {
+            status: 'success',
+            code: '200',
+            data
+          }
+          res.send(obj)
+        }
+      })
     })
   }
 })

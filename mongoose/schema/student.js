@@ -16,7 +16,7 @@ const studentSchema = new Schema({
     type: Number
   }
 })
-// 创建模型对象，利用model方法。参数一是数据库名字，参数二是schema
+// 创建模型对象，利用model方法。参数一是集合名字，参数二是schema 
 const studentModel = mongoose.model('students', studentSchema)
 
 module.exports = studentModel
