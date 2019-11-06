@@ -82,7 +82,7 @@ db.then(res => {
 
 
 // 端口监听
-app.listen(8080, (err) => {
+app.listen(3000, (err) => {
   if (!err) {
     console.log('服务器启动成功了~')
   } else {
