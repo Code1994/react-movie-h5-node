@@ -11,6 +11,7 @@ const hitFilmModel = require('../mongoose/schema/hitFilms')
 const futureFilmModel = require('../mongoose/schema/futureFilms')
 const adModel = require('../mongoose/schema/ads')
 const activityModel = require('../mongoose/schema/activities')
+const goodsModel = require('../mongoose/schema/goods')
 
 // 创建服务器
 const app = express()
@@ -81,6 +82,21 @@ db.then(res => {
     // 4.获取活动
     app.post('/getActivities', (req, res) => {
       activityModel.find({}, (err, data) => {
+        if (err) {
+          throw new Error(err)
+        } else {
+          const obj = {
+            status: 'success',
+            code: 200,
+            data
+          }
+          res.send(obj)
+        }
+      })
+    })
+    // 5.获取卖品
+    app.post('/getGoods', (req, res) => {
+      goodsModel.find({}, (err, data) => {
         if (err) {
           throw new Error(err)
         } else {
