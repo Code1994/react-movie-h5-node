@@ -10,6 +10,7 @@ const parser = require('body-parser')
 const hitFilmModel = require('../mongoose/schema/hitFilms')
 const futureFilmModel = require('../mongoose/schema/futureFilms')
 const adModel = require('../mongoose/schema/ads')
+const activityModel = require('../mongoose/schema/activities')
 
 // 创建服务器
 const app = express()
@@ -65,6 +66,21 @@ db.then(res => {
     app.post('/getAds', (req, res) => {
       // console.log(req.body)
       adModel.find({}, (err, data) => {
+        if (err) {
+          throw new Error(err)
+        } else {
+          const obj = {
+            status: 'success',
+            code: 200,
+            data
+          }
+          res.send(obj)
+        }
+      })
+    })
+    // 4.获取活动
+    app.post('/getActivities', (req, res) => {
+      activityModel.find({}, (err, data) => {
         if (err) {
           throw new Error(err)
         } else {
